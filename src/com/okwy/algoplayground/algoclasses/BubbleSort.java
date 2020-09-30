@@ -30,5 +30,6 @@ public class BubbleSort {
         int[] unsortedArray = {7, 2, 3, 5, 1, 9, 2, 8};
         System.out.println(">> Unsorted Array >>" + Arrays.toString(unsortedArray));
         System.out.println(">> The Sorted Array >>" + Arrays.toString(bubbleSort(unsortedArray)));
+
     }
 }
