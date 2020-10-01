@@ -58,26 +58,29 @@ public class TwoNumberSum {
     }
 
     public static int[] twoNumberSumFourth (int[] numArray, int targetSum){
-        //Most Optimal in most situations involving problem deviation (eg Ice Cream Parlor)
+        //Most Optimal in most situations involving slight problem deviation (eg Ice Cream Parlor)
         //Time complexity - O(n)
         //Space complexity - O(n)
-        Map<Integer, Integer> numCollection = new HashMap<>();
+        Map<Integer, Integer> numCollection = new HashMap<>(); //here (K,V) -> (the number itself, the number's index in the array)
         for(int i = 0; i < numArray.length; i++) {
-            int x = numArray[i];
-            int y = targetSum - x;
+            int num = numArray[i];
+            int difference = targetSum - num;
 
-            Integer mapNumberIndex = numCollection.get(y);
+            Integer mapNumberIndex = numCollection.get(difference);
             if(mapNumberIndex != null){
-                return new int[]{numArray[mapNumberIndex],numArray[i]};
+                return new int[]{numArray[mapNumberIndex],num};
             }
-            numCollection.put(x, i);
+            numCollection.put(num, i);
         }
 
         return new int[0];
     }
 
 
-    public static void main(String[] args) {
+
+
+
+        public static void main(String[] args) {
         // write your code here
         int[] numArray = new int[]{2, 3, 4, 1, 5, 6};
         int sum = 7;
