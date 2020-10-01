@@ -1,8 +1,6 @@
 package com.okwy.algoplayground.algoclasses;
 
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 public class TwoNumberSum {
 
@@ -59,6 +57,25 @@ public class TwoNumberSum {
 
     }
 
+    public static int[] twoNumberSumFourth (int[] numArray, int targetSum){
+        //Most Optimal in most situations involving problem deviation (eg Ice Cream Parlor)
+        //Time complexity - O(n)
+        //Space complexity - O(n)
+        Map<Integer, Integer> numCollection = new HashMap<>();
+        for(int i = 0; i < numArray.length; i++) {
+            int x = numArray[i];
+            int y = targetSum - x;
+
+            Integer mapNumberIndex = numCollection.get(y);
+            if(mapNumberIndex != null){
+                return new int[]{numArray[mapNumberIndex],numArray[i]};
+            }
+            numCollection.put(x, i);
+        }
+
+        return new int[0];
+    }
+
 
     public static void main(String[] args) {
         // write your code here
@@ -70,5 +87,6 @@ public class TwoNumberSum {
         System.out.println(">> Two Sum Array >>" + Arrays.toString(twoNumberSumFirst(numArray, sum)));
         System.out.println(">> Two Sum Array >>" + Arrays.toString(twoNumberSumSecond(numArray, sum)));
         System.out.println(">> Two Sum Array >>" + Arrays.toString(twoNumberSumThird(numArray, sum)));
+        System.out.println(">> Two Sum Array >>" + Arrays.toString(twoNumberSumFourth(numArray, sum)));
     }
 }
