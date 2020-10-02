@@ -61,4 +61,8 @@ public class DiskStacking {
 
         return sequence;
     }
+
+    public static void main(String[] args) {
+
+    }
 }
