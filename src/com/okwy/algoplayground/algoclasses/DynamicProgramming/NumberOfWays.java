@@ -1,4 +1,4 @@
-package com.okwy.algoplayground.algoclasses;
+package com.okwy.algoplayground.algoclasses.DynamicProgramming;
 
 import java.util.Arrays;
 import java.util.Scanner;

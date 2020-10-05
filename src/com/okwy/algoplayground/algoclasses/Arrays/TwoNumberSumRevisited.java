@@ -1,4 +1,4 @@
-package com.okwy.algoplayground.algoclasses;
+package com.okwy.algoplayground.algoclasses.Arrays;
 
 import java.lang.reflect.Array;
 import java.util.Arrays;
