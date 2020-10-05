@@ -1,4 +1,4 @@
-package com.okwy.algoplayground.algoclasses;
+package com.okwy.algoplayground.algoclasses.Sorting;
 
 import java.util.Arrays;
 

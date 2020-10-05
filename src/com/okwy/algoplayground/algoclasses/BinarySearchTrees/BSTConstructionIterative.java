@@ -1,4 +1,4 @@
-package com.okwy.algoplayground.algoclasses;
+package com.okwy.algoplayground.algoclasses.BinarySearchTrees;
 
 public class BSTConstructionIterative {
     static class BST {
