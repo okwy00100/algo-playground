@@ -1,6 +1,5 @@
-package com.okwy.algoplayground.algoclasses.Arrays;
+package com.okwy.algoplayground.Arrays;
 
-import java.lang.reflect.Array;
 import java.util.Arrays;
 
 public class TwoNumberSumRevisited {

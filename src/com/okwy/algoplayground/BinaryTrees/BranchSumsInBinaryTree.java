@@ -1,4 +1,4 @@
-package com.okwy.algoplayground.algoclasses.BinaryTrees;
+package com.okwy.algoplayground.BinaryTrees;
 
 public class BranchSumsInBinaryTree {
 

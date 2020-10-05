@@ -1,4 +1,4 @@
-package com.okwy.algoplayground.algoclasses.Arrays;
+package com.okwy.algoplayground.Arrays;
 
 import java.util.*;
 
