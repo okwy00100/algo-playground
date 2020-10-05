@@ -1,4 +1,4 @@
-package com.okwy.algoplayground.algoclasses.BinarySearchTrees;
+package com.okwy.algoplayground.BinarySearchTrees;
 
 public class BSTConstructionRecursive {
 

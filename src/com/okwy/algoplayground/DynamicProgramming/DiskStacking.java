@@ -1,4 +1,4 @@
-package com.okwy.algoplayground.algoclasses.DynamicProgramming;
+package com.okwy.algoplayground.DynamicProgramming;
 
 import java.util.ArrayList;
 import java.util.List;
