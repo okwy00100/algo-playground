@@ -1,6 +1,6 @@
 package com.okwy.algoplayground.algoclasses;
 
-public class BSTConstruction {
+public class BSTConstructionRecursive {
 
     static class BST {
         public int value;
@@ -56,7 +56,7 @@ public class BSTConstruction {
         }
 
         //Helper method for the BST node removal
-        public BST remove(int value, BST parent) {
+        public void remove(int value, BST parent) {
             //If value is smaller than current node value, move left
             if (value < this.value) {
                 //If left node is not null, perform recursion
@@ -87,7 +87,7 @@ public class BSTConstruction {
                         left = right.left;
                         right = right.right;
                     } else {
-                        // do nothing
+                        //do nothing or nullify BST
                     }
                     //If node is parent's left child
                 } else if (parent.left == this) {
@@ -96,9 +96,7 @@ public class BSTConstruction {
                 } else if (parent.right == this) {
                     parent.right = left != null ? left : right;
                 }
-
             }
-            return this;
         }
 
         public int getMinimumValue() {
