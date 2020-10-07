@@ -2,28 +2,28 @@ package com.okwy.algoplayground.BinarySearchTrees;
 
 public class BSTConstructionRecursive {
 
-    static class BST {
+    static class Node {
         public int value;
-        public BST left;
-        public BST right;
+        public Node left;
+        public Node right;
 
-        public BST(int value) {
+        public Node(int value) {
             this.value = value;
         }
 
-        public BST insert(int value) {
+        public Node insert(int value) {
             //first, compare the value with the value of the current node
             if (value < this.value) {
                 if (left == null) {
-                    BST bst = new BST(value);
-                    left = bst;
+                    Node node = new Node(value);
+                    left = node;
                 } else {
                     left.insert(value);
                 }
             } else {
                 if (right == null) {
-                    BST bst = new BST(value);
-                    right = bst;
+                    Node node = new Node(value);
+                    right = node;
                 } else {
                     right.insert(value);
                 }
@@ -50,13 +50,13 @@ public class BSTConstructionRecursive {
             }
         }
 
-        public BST remove(int value) {
+        public Node remove(int value) {
             remove(value, null);
             return this;
         }
 
-        //Helper method for the BST node removal
-        public void remove(int value, BST parent) {
+        //Helper method for the Node node removal
+        public void remove(int value, Node parent) {
             //If value is smaller than current node value, move left
             if (value < this.value) {
                 //If left node is not null, perform recursion
@@ -87,7 +87,7 @@ public class BSTConstructionRecursive {
                         left = right.left;
                         right = right.right;
                     } else {
-                        //do nothing or nullify BST
+                        //do nothing or nullify Node
                     }
                     //If node is parent's left child
                 } else if (parent.left == this) {

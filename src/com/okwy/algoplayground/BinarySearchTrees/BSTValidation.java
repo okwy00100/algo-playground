@@ -1,24 +1,24 @@
 package com.okwy.algoplayground.BinarySearchTrees;
 
 public class BSTValidation {
-    static class BST {
+    static class Node {
         public int value;
-        public BST left;
-        public BST right;
+        public Node left;
+        public Node right;
 
-        public BST(int value) {
+        public Node(int value) {
             this.value = value;
         }
     }
 
     //Time complexity - O(n) : Traversing every single node
     //Space complexity - O(d) : Recurring method recursion at each level of depth of the tree, each taking space in the call stack
-    public static boolean validateBst(BST tree) {
+    public static boolean validateBst(Node tree) {
         // Write your code here.
         return validateBst(tree, Integer.MIN_VALUE, Integer.MAX_VALUE);
     }
 
-    public static boolean validateBst(BST tree, int minValue, int maxValue){
+    public static boolean validateBst(Node tree, int minValue, int maxValue){
         if(tree == null){
             return true;
         }
@@ -34,7 +34,7 @@ public class BSTValidation {
         return true;
     }
 
-    public static boolean validateBstCollapsed(BST tree, int minValue, int maxValue){
+    public static boolean validateBstCollapsed(Node tree, int minValue, int maxValue){
         if(tree == null){
             return true;
         }

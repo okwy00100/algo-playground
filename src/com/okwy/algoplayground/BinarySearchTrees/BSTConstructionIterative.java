@@ -1,32 +1,32 @@
 package com.okwy.algoplayground.BinarySearchTrees;
 
 public class BSTConstructionIterative {
-    static class BST {
+    static class Node {
         public int value;
-        public BST left;
-        public BST right;
+        public Node left;
+        public Node right;
 
-        public BST(int value) {
+        public Node(int value) {
             this.value = value;
         }
 
-        public BST insert(int value) {
-            BST currentNode = this;
+        public Node insert(int value) {
+            Node currentNode = this;
             //first, compare the value with the value of the current node
             //Using an infinite loop to maintain the check, break when insertion has taken place
             while (true) {
                 if (value < currentNode.value) {
                     if (currentNode.left == null) {
-                        BST bst = new BST(value);
-                        currentNode.left = bst;
+                        Node node = new Node(value);
+                        currentNode.left = node;
                         break;
                     } else {
                         currentNode = currentNode.left;
                     }
                 } else {
                     if (currentNode.right == null) {
-                        BST bst = new BST(value);
-                        currentNode.right = bst;
+                        Node node = new Node(value);
+                        currentNode.right = node;
                         break;
                     } else {
                         currentNode = currentNode.right;
@@ -37,7 +37,7 @@ public class BSTConstructionIterative {
         }
 
         public boolean contains(int value) {
-            BST currentNode = this;
+            Node currentNode = this;
             while (currentNode != null) {
                 if (value < currentNode.value) {
                     currentNode = currentNode.left;
@@ -51,14 +51,14 @@ public class BSTConstructionIterative {
 
         }
 
-        public BST remove(int value) {
+        public Node remove(int value) {
             remove(value, null);
             return this;
         }
 
-        //Helper method for the BST node removal
-        public void remove(int value, BST parentNode) {
-            BST currentNode = this;
+        //Helper method for the Node node removal
+        public void remove(int value, Node parentNode) {
+            Node currentNode = this;
             while (currentNode != null) {
                 if (value < currentNode.value) {
                     if (currentNode.left != null) {
@@ -84,7 +84,7 @@ public class BSTConstructionIterative {
                             currentNode.left = currentNode.right.left;
                             currentNode.right = currentNode.right.right;
                         } else {
-                            //do nothing or nullify BST
+                            //do nothing or nullify Node
                             currentNode = null;
                         }
 
