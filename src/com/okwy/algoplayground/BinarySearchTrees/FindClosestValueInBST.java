@@ -2,17 +2,17 @@ package com.okwy.algoplayground.BinarySearchTrees;
 
 public class FindClosestValueInBST {
 
-    public static class BST {
+    public static class Node {
         public int value;
-        public BST left;
-        public BST right;
+        public Node left;
+        public Node right;
 
-        public BST(int value) {
+        public Node(int value) {
             this.value = value;
         }
     }
 
-    public static int findClosestValueInBst(BST tree, int target, String type) {
+    public static int findClosestValueInBst(Node tree, int target, String type) {
         //Time complexity: O(log(N))[average] || O(N)[worst]
         //Space complexity(Recursively): O(log(N))[average] || O(N)[worst]
         //Space complexity(Iteratively): O(1)
@@ -24,7 +24,7 @@ public class FindClosestValueInBST {
     }
 
 
-    public static int findClosestValueInBstRecursively(BST tree, int target, int closest){
+    public static int findClosestValueInBstRecursively(Node tree, int target, int closest){
         //First, we verify the closest node to our target
         // We do this by verifying if the absolute difference between the current closest node
         // and the target is less than the absolute difference between the target
@@ -32,7 +32,7 @@ public class FindClosestValueInBST {
         if(Math.abs(closest-target)>Math.abs(tree.value-target)){
             closest = tree.value;
         }
-        //using the property of the BST, use the target to travel the tree and recursively check each node
+        //using the property of the Node, use the target to travel the tree and recursively check each node
         if(tree.left != null && target < tree.value){
             return findClosestValueInBstRecursively(tree.left, target, closest);
         } else if(tree.right != null && target > tree.value){
@@ -43,10 +43,10 @@ public class FindClosestValueInBST {
     }
 
 
-    private static int findClosestValueInBstIteratively(BST tree, int target, int closest) {
-        //Similar to the recursive method, the only difference here is that we have a BST variable
+    private static int findClosestValueInBstIteratively(Node tree, int target, int closest) {
+        //Similar to the recursive method, the only difference here is that we have a Node variable
         // to keep track of where we are on the tree and we simply update that variable as we traverse the tree
-        BST currentNode = tree;
+        Node currentNode = tree;
         while(currentNode != null){
             if(Math.abs(target-closest) > Math.abs(target-currentNode.value)){
                 closest = currentNode.value;
@@ -75,15 +75,15 @@ public class FindClosestValueInBST {
          *
          * */
 
-        BST root = new BST(10);
-        root.left = new BST(5);
-        root.left.left = new BST(2);
-        root.left.right = new BST(5);
-        root.left.left.left = new BST(1);
-        root.right = new BST(15);
-        root.right.left = new BST(13);
-        root.right.right= new BST(22);
-        root.right.left.right= new BST(14);
+        Node root = new Node(10);
+        root.left = new Node(5);
+        root.left.left = new Node(2);
+        root.left.right = new Node(5);
+        root.left.left.left = new Node(1);
+        root.right = new Node(15);
+        root.right.left = new Node(13);
+        root.right.right= new Node(22);
+        root.right.left.right= new Node(14);
 
         int target = 12;
         System.out.println(">>>>>>Target>>>>>" + 12);
