@@ -1,8 +1,9 @@
 package com.okwy.algoplayground.Strings;
 
 public class PalindromeCheck {
-    public static boolean isPalindromeBruteForce(String str) {
-
+    public static boolean isPalindromeFirstAttempt(String str) {
+        //Time complexity - O(n)
+        //Space complexity - O(1)
         boolean palindromCheck = false;
         char[] charArray = str.toCharArray();
         for(int i = 0; i < charArray.length; i++){
@@ -13,12 +14,16 @@ public class PalindromeCheck {
     }
 
     public static boolean isPalindromeOne(String str) {
+        //Time complexity - O(n^2)
+        //Space complexity - O(n)
         String reversedString ="";
         for(int i = str.length()-1; i>=0; i--){
             reversedString += str.charAt(i);
         }
         return str.equals(reversedString);
     }
+
+
 
 
 
