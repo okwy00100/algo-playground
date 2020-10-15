@@ -43,7 +43,22 @@ public class PalindromeCheck {
 
 
     public static void main(String[] args) {
+        String test1 = "abcba";
+        String test2 = "ajhfsfjsf";
+        String test3 = "aaaaaaaaa";
         System.out.println(">>>>>>>>Palindrome check>>>>>>>>>>");
+        System.out.println(">>>>>>Test 1>>>>>>>" + isPalindromeFirstAttempt(test1));
+        System.out.println(">>>>>>Test 2>>>>>>>" + isPalindromeFirstAttempt(test2));
+        System.out.println(">>>>>>Test 3>>>>>>>" + isPalindromeFirstAttempt(test3));
+        System.out.println(">>>>>>>>Palindrome check>>>>>>>>>>");
+        System.out.println(">>>>>>Test 1>>>>>>>" + isPalindromeOne(test1));
+        System.out.println(">>>>>>Test 2>>>>>>>" + isPalindromeOne(test2));
+        System.out.println(">>>>>>Test 3>>>>>>>" + isPalindromeOne(test3));
+        System.out.println(">>>>>>>>Palindrome check>>>>>>>>>>");
+        System.out.println(">>>>>>Test 1>>>>>>>" + isPalindromeTwo(test1));
+        System.out.println(">>>>>>Test 2>>>>>>>" + isPalindromeTwo(test2));
+        System.out.println(">>>>>>Test 3>>>>>>>" + isPalindromeTwo(test3));
+
 
     }
 }
