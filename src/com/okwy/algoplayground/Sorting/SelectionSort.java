@@ -27,7 +27,6 @@ public class SelectionSort {
         }
 
         return array;
-
     }
 
     public static void main(String[] args) {
