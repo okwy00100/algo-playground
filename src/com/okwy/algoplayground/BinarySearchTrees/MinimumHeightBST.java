@@ -33,7 +33,6 @@ public class MinimumHeightBST {
     }
 
     public static BST minHeightBst(List<Integer> array) {
-        // Write your code here.
         return minHeightBSThelper(array, null, 0, array.size() -1);
     }
 
