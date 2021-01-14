@@ -5,7 +5,7 @@ import java.util.Arrays;
 public class ArrayOfProducts {
 
 
-    public static int[] arrayOfProductsOne(int[] array) {
+    private static int[] arrayOfProductsOne(int[] array) {
         // Time: O(n^2); Space: O(n)
         int[] products = new int[array.length];
         for(int i = 0; i < array.length; i++){
@@ -22,7 +22,7 @@ public class ArrayOfProducts {
     }
 
 
-    public static int[] arrayOfProductsTwo(int[] array){
+    private static int[] arrayOfProductsTwo(int[] array){
         // Time: O(n); Space: O(n)
         int[] products = new int[array.length];
         int[] leftProducts = new int[array.length];

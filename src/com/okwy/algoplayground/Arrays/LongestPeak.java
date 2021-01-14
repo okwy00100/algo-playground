@@ -2,7 +2,7 @@ package com.okwy.algoplayground.Arrays;
 
 public class LongestPeak {
 
-    public static int longestPeak(int[] array) {
+    private static int longestPeak(int[] array) {
         //Time complexity - O(n)
         //Space complexity - O(1)
         int longestPeakLength = 0;
