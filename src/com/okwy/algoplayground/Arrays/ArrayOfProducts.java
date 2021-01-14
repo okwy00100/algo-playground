@@ -48,9 +48,11 @@ public class ArrayOfProducts {
         return products;
     }
 
+
     public static void main(String[] args) {
         int[] inputArray = {7, 2, 3, 5, 1, 9, 2, 8};
         System.out.println(">> Input Array >>" + Arrays.toString(inputArray));
-        System.out.println(">> Output Array >>" + Arrays.toString(arrayOfProductsOne(inputArray)));
+        System.out.println(">> Output Array (1) >>" + Arrays.toString(arrayOfProductsOne(inputArray)));
+        System.out.println(">> Output Array (2) >>" + Arrays.toString(arrayOfProductsTwo(inputArray)));
     }
 }
