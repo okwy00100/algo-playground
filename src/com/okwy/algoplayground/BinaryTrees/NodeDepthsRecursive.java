@@ -14,6 +14,9 @@ public class NodeDepthsRecursive {
         }
     }
 
+    //Time: O(n), Space: O(h)
+    //Where,  n is the number of nodes
+    //        h is the node height/depth
     private static int nodeDepths(BinaryTree root) {
         return calculateNodeDepths(root, 0);
     }
