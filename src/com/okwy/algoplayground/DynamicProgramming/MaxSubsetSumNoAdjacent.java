@@ -25,11 +25,35 @@ public class MaxSubsetSumNoAdjacent {
         return maxSums[array.length - 1];
     }
 
+
+    private static int maxSubsetSumNoAdjacentTwo(int[] array) {
+        //Time: O(n), Space: O(1)
+        if(array.length == 0){
+            return 0;
+        }
+
+        if(array.length == 1){
+            return array[0];
+        }
+
+        int first = array[0];
+        int next = Math.max(array[0], array[1]);
+
+        for(int i = 2; i < array.length; i++){
+            int current = Math.max(next, first + array[i]);
+            first = next;
+            next = current;
+        }
+
+        return next;
+    }
+
     public static void main(String[] args) {
         int[] arr = {75, 105, 120, 75, 90, 135};
 
         System.out.println("Max Subset Sum, No Adjacent");
         System.out.println(Arrays.toString(arr));
         System.out.println(maxSubsetSumNoAdjacentOne(arr));
+        System.out.println(maxSubsetSumNoAdjacentTwo(arr));
     }
 }
