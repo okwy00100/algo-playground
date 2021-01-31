@@ -7,5 +7,6 @@ They've all been grouped into the following
 - Binary Search Trees
 - Binary Trees
 - Dynamic Programming
+- Greedy Algorithms
 - Sorting Algorithms 
 - String Manipulation 
