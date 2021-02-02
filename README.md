@@ -6,6 +6,7 @@ They've all been grouped into the following
 - Arrays
 - Binary Search Trees
 - Binary Trees
+- Linked Lists
 - Dynamic Programming
 - Famous Algorithms
 - Greedy Algorithms
