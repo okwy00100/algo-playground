@@ -26,8 +26,20 @@ public class RemoveDuplicates {
      * */
 
     private static LinkedList removeDuplicatesSorted (LinkedList linkedList){
+        //Time: O(n), Space: O(1)
+        //This implementation utilizes a single pointer variable tracking each node.
+        //If the value of the next node is equal to that of the current, simply take
+        //the next pointer to the next node after the next ie node.next.next, then move
+        //the current node and repeat
 
-        return null;
+        LinkedList currentNode = linkedList;
+        while(currentNode != null){
+            while(currentNode.next != null && currentNode.value == currentNode.next.value){
+                currentNode.next = currentNode.next.next;
+            }
+            currentNode = currentNode.next;
+        }
+        return linkedList;
     }
 
     /**
@@ -81,7 +93,8 @@ public class RemoveDuplicates {
     public static void main(String[] args) {
 
         /**
-         *       1 -> 1 -> 3 -> 4 -> 4 -> 4 -> 5 -> 6 -> 6 -> null
+         *  1 -> 1 -> 3 -> 4 -> 4 -> 4 -> 5 -> 6 -> 6 -> null
+         *
          * */
 
 
@@ -101,7 +114,13 @@ public class RemoveDuplicates {
 
         System.out.println("");
 
-        System.out.println("Removed Duplicates from LinkedList");
+        System.out.println("Removed Duplicates from LinkedList (Sorted)");
+        System.out.println("----------------------------------");
+        printLinkedList(removeDuplicatesSorted(head));
+
+        System.out.println("");
+
+        System.out.println("Removed Duplicates from LinkedList (Unsorted)");
         System.out.println("----------------------------------");
         printLinkedList(removeDuplicatesUnsortedTwo(head));
 
