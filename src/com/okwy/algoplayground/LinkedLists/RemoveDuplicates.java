@@ -25,7 +25,7 @@ public class RemoveDuplicates {
      * Sorted List
      * */
 
-    private LinkedList removeDuplicatesSorted (LinkedList linkedList){
+    private static LinkedList removeDuplicatesSorted (LinkedList linkedList){
 
         return null;
     }
@@ -34,13 +34,13 @@ public class RemoveDuplicates {
      * Unsorted List
      * */
 
-    private LinkedList removeDuplicatesUnsortedOne (LinkedList linkedList){
+    private static LinkedList removeDuplicatesUnsortedOne (LinkedList linkedList){
 
 
         return null;
     }
 
-    private LinkedList removeDuplicatesUnsortedTwo (LinkedList linkedList){
+    private static LinkedList removeDuplicatesUnsortedTwo (LinkedList linkedList){
         //Time: O(n^2), Space: O(1)
         //This implementation simply using a two pointer variables to track each node.
         //A current pointer and a runner. The runner is compared with the current and
@@ -67,9 +67,43 @@ public class RemoveDuplicates {
     }
 
 
+    private static void printLinkedList(LinkedList head){
+        LinkedList current = head;
+        while(current != null){
+            System.out.print(current.value + " -> ");
+            current = current.next;
+        }
+        System.out.println("null");
+    }
+
 
 
     public static void main(String[] args) {
+
+        /**
+         *       1 -> 1 -> 3 -> 4 -> 4 -> 4 -> 5 -> 6 -> 6 -> null
+         * */
+
+
+        LinkedList head = new LinkedList(1);
+        head.next = new LinkedList(1);
+        head.next.next = new LinkedList(3);
+        head.next.next.next = new LinkedList(4);
+        head.next.next.next.next = new LinkedList(4);
+        head.next.next.next.next.next = new LinkedList(4);
+        head.next.next.next.next.next.next = new LinkedList(5);
+        head.next.next.next.next.next.next.next = new LinkedList(6);
+        head.next.next.next.next.next.next.next.next = new LinkedList(6);
+
+        System.out.println("LinkedList Sample");
+        System.out.println("-----------------");
+        printLinkedList(head);
+
+        System.out.println("");
+
+        System.out.println("Removed Duplicates from LinkedList");
+        System.out.println("----------------------------------");
+        printLinkedList(removeDuplicatesUnsortedTwo(head));
 
     }
 }
