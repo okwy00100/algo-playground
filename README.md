@@ -8,6 +8,7 @@ They've all been grouped into the following
 - Binary Trees
 - Linked Lists
 - Graphs
+- Recursion
 - Dynamic Programming
 - Famous Algorithms
 - Greedy Algorithms
