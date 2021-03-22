@@ -13,8 +13,7 @@ public class SortedSquareArray {
      */
 
     private static int[] sortedSquaredArray(int[] array) {
-        // Write your code here.
-
+        //A pretty basic problem
         for(int i = 0; i < array.length; i++){
             array[i] = array[i] * array[i];
         }
