@@ -32,7 +32,7 @@ public class FirstNonRepeatingCharacter {
 
 
     private static int firstNonRepeatingCharacterOptimized(String string) {
-
+        //  Time: O(n), Space: O(1)
         Map<Character, Integer> charFrequency = new HashMap<>();
         for (int i = 0; i < string.length(); i++) {
             charFrequency.put(string.charAt(i), (charFrequency.get(string.charAt(i)) == null ? 0 : charFrequency.get(string.charAt(i))) + 1);
