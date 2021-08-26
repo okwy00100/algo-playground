@@ -8,12 +8,13 @@ public class SortedSquareArray {
      * Description of the problem
      * --------------------------
      * Give a function that takes in a non-empty array of integers that are sorted in ascending order and returns
-     * a new array of the same length with the squeares of the original integers also in ascending order
+     * a new array of the same length with the squares of the original integers also in ascending order
      *
      */
 
     private static int[] sortedSquaredArray(int[] array) {
         //A pretty basic problem
+        //Time: O(nlogn), Space: O(n)
         for(int i = 0; i < array.length; i++){
             array[i] = array[i] * array[i];
         }
