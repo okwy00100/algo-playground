@@ -14,16 +14,16 @@ public class SpiralTraversal {
      * Recursive solution
      * */
 
-    public static List<Integer> spiralTraverseRecursive(int[][] array) {
-        if (array.length == 0) return new ArrayList<Integer>();
+    private static List<Integer> spiralTraverseRecursive(int[][] array) {
+        if (array.length == 0) return new ArrayList<>();
 
-        ArrayList<Integer> result = new ArrayList<Integer>();
+        ArrayList<Integer> result = new ArrayList<>();
         spiralArrayGenerator(array, 0, array.length - 1, 0, array[0].length - 1, result);
         return result;
     }
 
     @SuppressWarnings("Duplicates")
-    public static void spiralArrayGenerator(int[][] array, int startrow, int endrow, int startcolumn,
+    private static void spiralArrayGenerator(int[][] array, int startrow, int endrow, int startcolumn,
                                             int endcolumn, ArrayList<Integer> result) {
         if (startrow > endrow || startcolumn > endcolumn) {
             return;
@@ -58,16 +58,16 @@ public class SpiralTraversal {
      * Iterative solution
      * */
     @SuppressWarnings("Duplicates")
-    public static List<Integer> spiralTraverseIterative(int[][] array) {
+    private static List<Integer> spiralTraverseIterative(int[][] array) {
 
-        if (array.length == 0) return new ArrayList<Integer>();
+        if (array.length == 0) return new ArrayList<>();
 
         int begincolumn = 0;
         int finishcolumn = array[0].length - 1;
         int beginrow = 0;
         int finishrow = array.length - 1;
 
-        List<Integer> result = new ArrayList<Integer>();
+        List<Integer> result = new ArrayList<>();
         while (begincolumn <= finishcolumn && beginrow <= finishrow) {
             for (int column = begincolumn; column <= finishcolumn; column++) {
                 result.add(array[beginrow][column]);
@@ -100,9 +100,17 @@ public class SpiralTraversal {
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     public static void main(String[] args) {
 
+//        int[][] array = {
+//                {4, 2, 3, 6, 7, 8, 1, 9, 5, 10},
+//                {12, 19, 15, 16, 20, 18, 13, 17, 11, 14}
+//        };
+
         int[][] array = {
-                {4, 2, 3, 6, 7, 8, 1, 9, 5, 10},
-                {12, 19, 15, 16, 20, 18, 13, 17, 11, 14}
+                {1, 2, 3, 4, 5},
+                {6, 7, 8, 9, 10},
+                {11, 12, 13, 14, 15},
+                {16, 17, 18, 19, 20},
+                {21, 22, 23, 24, 25}
         };
 
 
