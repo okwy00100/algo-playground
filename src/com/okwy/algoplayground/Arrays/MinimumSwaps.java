@@ -19,20 +19,20 @@ public class MinimumSwaps {
 
         for (int i = 0; i < arr.length; i++) {
             if(i+1 != arr[i]){   //ideal case scenario for an already sorted pair of consecutive array elements; if not true/valid, enter block
-                int tempIndex = i;
-                int tempElement = arr[i];
+                int tempIndex = i;      //introduce temp index for tracking
+                int tempElement = arr[i];  //introduce temp variable to store current element for eventual swap
 
-                while(i+1 != arr[tempIndex]){
+                while(i+1 != arr[tempIndex]){  //check if ideal case scenario exists, if not, move tracker till you find corresponding element
                     tempIndex++;
                 }
 
-                arr[tempIndex] =arr[i];
+                arr[tempIndex] =arr[i];  //swappity swap, swap, swappity swap...
                 arr[i] = tempElement;
                 minSwap++;
             }
         }
 
-        return minSwap;
+        return minSwap;  //return
     }
 
     public static void main(String[] args) {
