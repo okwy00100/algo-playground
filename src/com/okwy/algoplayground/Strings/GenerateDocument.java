@@ -55,7 +55,7 @@ public class GenerateDocument {
         return true;
     }
 
-
+    //TODO
     private static boolean generateDocumentOptimized(String characters, String document) {
 
 
