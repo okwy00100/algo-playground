@@ -34,9 +34,19 @@ public class ReverseLinkedList {
      */
     private static LinkedList reverseLinkedListIterative(LinkedList head) {
         // Time: O(n)
-        // Space: O(n)
+        // Space: O(1)
 
-        return null;
+        LinkedList current = head;
+        LinkedList previous = null;
+        LinkedList next = null;
+        while(current != null){
+            next = current.next;
+            current.next = previous;
+            previous = current;
+            current = next;
+        }
+
+        return previous;
     }
 
     public static void main(String[] args) {
