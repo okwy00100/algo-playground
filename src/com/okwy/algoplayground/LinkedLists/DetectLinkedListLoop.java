@@ -11,9 +11,49 @@ public class DetectLinkedListLoop {
         }
     }
 
-    public static LinkedList findLoop(LinkedList head) {
-        // Write your code here.
-        return null;
+
+    public static LinkedList findLoopMethodOne(LinkedList head) {
+        // Time: O(n).
+        // Space: O(1)
+        LinkedList fast = head;
+        LinkedList slow = head;
+
+        while(fast != null && slow != null && fast.next != null){
+            slow = slow.next;
+            fast = fast.next.next;
+            if(fast == slow){
+                break;
+            }
+        }
+
+        slow = head;
+        while(slow != fast){
+            slow = slow.next;
+            fast = fast.next;
+        }
+
+        return fast;
+    }
+
+
+    public static LinkedList findLoopMethodTwo(LinkedList head) {
+        // Time: O(n).
+        // Space: O(1)
+        LinkedList fast = head.next.next;
+        LinkedList slow = head.next;
+
+        while(slow != fast){
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+
+        slow = head;
+        while(slow != fast){
+            slow = slow.next;
+            fast = fast.next;
+        }
+
+        return fast;
     }
 
 
