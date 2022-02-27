@@ -48,6 +48,31 @@ public class MaxSubsetSumNoAdjacent {
         return next;
     }
 
+
+    private static int maxSubsetSumNoAdjacentThree(int[] arr){
+        //Time: O(n), Space: O(1)
+        //---------------------------
+        //we make the assumption we do not need the input array for any other thing
+
+        //First base case
+        if (arr.length == 0) return 0;
+
+        //Re-Initialization of first array element
+        arr[0] = Math.max(0, arr[0]);
+
+        //Second base case
+        if (arr.length == 1) return arr[0];
+
+        //Re-Initialization of second array element
+        arr[1] = Math.max(arr[0], arr[1]);
+
+        //Iteration of array and accumulation of no adjacent maxsum in subsets
+        for (int i = 2; i < arr.length; i++)
+            arr[i] = Math.max(arr[i - 1], arr[i] + arr[i - 2]);
+
+        return arr[arr.length - 1];
+    }
+
     public static void main(String[] args) {
         int[] arr = {75, 105, 120, 75, 90, 135};
 
@@ -55,5 +80,6 @@ public class MaxSubsetSumNoAdjacent {
         System.out.println(Arrays.toString(arr));
         System.out.println(maxSubsetSumNoAdjacentOne(arr));
         System.out.println(maxSubsetSumNoAdjacentTwo(arr));
+        System.out.println(maxSubsetSumNoAdjacentThree(arr));
     }
 }
