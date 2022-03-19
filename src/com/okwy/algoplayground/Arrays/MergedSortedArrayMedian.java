@@ -1,5 +1,9 @@
 package com.okwy.algoplayground.Arrays;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
 public class MergedSortedArrayMedian {
 
 
@@ -48,6 +52,30 @@ public class MergedSortedArrayMedian {
         return arr;
     }
 
+
+
+    private static double findMedianSortedArraysBruteForce(int[] nums1, int[] nums2) {
+
+        List<Integer> arr = new ArrayList<>();
+
+        for(int i = 0; i < nums1.length; i++){
+            arr.add(nums1[i]);
+        }
+
+        for(int j = 0; j < nums2.length; j++){
+            arr.add(nums2[j]);
+        }
+
+        Collections.sort(arr);
+
+        if(arr.size()%2 != 0)
+            return (double) arr.get(arr.size()/2);
+
+
+        return (double) (arr.get(arr.size()/2) + arr.get(arr.size()/2 - 1))/2;
+
+    }
+
     public static void main(String[] args) {
 
 //        int[] nums1 = {1,2}, nums2 = {3,4};
@@ -56,5 +84,6 @@ public class MergedSortedArrayMedian {
         int[] nums1 = {10, 22, 45, 100}, nums2 = {11, 3, 4};
 
         System.out.println(">>>>>>>>>>>>" + findMedianSortedArrays(nums1, nums2));
+        System.out.println(">>>>>>>>>>>>" + findMedianSortedArraysBruteForce(nums1, nums2));
     }
 }
