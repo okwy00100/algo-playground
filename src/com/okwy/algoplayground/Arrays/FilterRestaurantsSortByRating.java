@@ -1,8 +1,8 @@
 package com.okwy.algoplayground.Arrays;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
+
 
 public class FilterRestaurantsSortByRating {
 
@@ -57,7 +57,7 @@ public class FilterRestaurantsSortByRating {
         }
 
 
-        Collections.sort(restaurantList, (a, b) -> a.rating == b.rating ? b.id - a.id : b.rating - a.rating);
+        restaurantList.sort((a, b) -> a.rating == b.rating ? b.id - a.id : b.rating - a.rating);
 
         for(Restaurant r : restaurantList){
             result.add(r.id);
