@@ -84,11 +84,15 @@ public class DetectOrderBusiness {
         }
 
         //Initialize the priority queue for ordering the chain of businesses
-        PriorityQueue<Chain> chainQueue = new PriorityQueue<>((a,b) -> a.frequency.compareTo(b.frequency) == 0 ?  b.name.compareTo(a.name) : Integer.compare(b.frequency, a.frequency));
+        PriorityQueue<Chain> chainQueue = new PriorityQueue<>((a,b) -> a.frequency.compareTo(b.frequency) == 0 ?  a.name.compareTo(b.name) : Integer.compare(b.frequency, a.frequency));
 
 
-        for (Map.Entry<String, Chain> entry : chainMap.entrySet()) {
-            chainQueue.add(entry.getValue());
+//        for (Map.Entry<String, Chain> entry : chainMap.entrySet()) {
+//            chainQueue.add(entry.getValue());
+//        }
+
+        for (String entry : chainMap.keySet()) {
+            chainQueue.add(chainMap.get(entry));
         }
 
         System.out.println(">>>>>>>>>>>>>>>Between add entry and poll");
@@ -153,7 +157,7 @@ public class DetectOrderBusiness {
 
 
         System.out.println(detectAndOrderChainBusiness(businesses, "Lagos"));
-//        System.out.println(detectAndOrderChainBusinessTwo(businesses, "Lagos"));
+        System.out.println(detectAndOrderChainBusinessTwo(businesses, "Lagos"));
 
     }
 }

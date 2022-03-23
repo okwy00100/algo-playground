@@ -141,7 +141,7 @@ public class SearchSuggestionsUsingTrie {
 
         for(Trie child : root.children){
             if(child != null){
-               result =  dfs(child, word + root.value, result);
+               result = dfs(child, word + root.value, result);
             }
         }
 
