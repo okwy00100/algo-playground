@@ -47,5 +47,11 @@ public class FirstDuplicateValue {
         System.out.println(">> Output (1) >> " + firstDuplicateValueOne(inputArray));
         System.out.println(">> Output (2) >> " + firstDuplicateValueTwo(inputArray));
 
+        System.out.println(args.length);
+
+        for(String a : args){
+            System.out.println(a);
+        }
+
     }
 }

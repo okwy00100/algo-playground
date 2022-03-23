@@ -68,13 +68,50 @@ public class LeftRotation {
 
     private static void leftRotateHelper(Integer[] a, int start, int end) {
         while (start < end) {
+            System.out.println("---------------");
             int temp = a[start];
+            System.out.println("---temp = a[start]----" + a[start]);
+            System.out.println("--- a[start ++]----" + a[start]);
+            System.out.println("--- a[end]----" + a[start]);
+            System.out.println("--- a[end--]----" + a[start]);
             a[start++] = a[end];
             a[end--] = temp;
 
         }
 
     }
+
+
+
+    //Easiest implementation
+
+    public static List<Integer> rotateLeft(int d, List<Integer> arr) {
+        // Write your code here
+
+        Integer[] rotate_array = new Integer[arr.size()];
+        Integer rotate_index = d;
+
+        Integer count = 0;
+
+        while(rotate_index < arr.size()){
+            rotate_array[count] = arr.get(rotate_index);
+            count++;
+            rotate_index++;
+        }
+
+        rotate_index = 0;
+
+        while(rotate_index < d){
+            rotate_array[count] = arr.get(rotate_index);
+            count++;
+            rotate_index++;
+        }
+
+        return Arrays.asList(rotate_array);
+    }
+
+
+
 
     public static void main(String[] args) {
 
@@ -85,9 +122,15 @@ public class LeftRotation {
         Integer[] numArray = {1, 2, 3, 4, 5, 6};
         Integer d = 4;
 
-        System.out.println(">>>>>>>>>" + test);
-//        System.out.println("\nNumarray After Rotate Helper phase 3>>>>>>>>>>>>>>>>" + rotateLeftUsingHelper(test, 4));
-        System.out.println("\nNumarray After Rotate Array Copy>>>>>>>>>>>>>>>>" + rotateLeftUsingArrayCopy(test, 4));
+//        System.out.println(">>>>>>>>>" + test);
+        System.out.println("\nNumarray After Rotate Helper phase 3>>>>>>>>>>>>>>>>" + rotateLeftUsingHelper(test, 4) + "\n");
+
+        System.out.println("\nNumarray After Rotate Helper phase 3>>>>>>>>>>>>>>>>" + rotateLeftUsingHelper(test, 1) + "\n");
+
+        System.out.println("\nNumarray After Rotate Helper phase 3>>>>>>>>>>>>>>>>" + rotateLeftUsingHelper(test, 3) + "\n");
+
+        System.out.println("\nNumarray After Rotate Helper phase 3>>>>>>>>>>>>>>>>" + rotateLeftUsingHelper(test, 5) + "\n");
+//        System.out.println("\nNumarray After Rotate Array Copy>>>>>>>>>>>>>>>>" + rotateLeftUsingArrayCopy(test, 4));
 
     }
 }

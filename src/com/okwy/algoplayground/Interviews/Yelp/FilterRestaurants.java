@@ -1,11 +1,10 @@
-package com.okwy.algoplayground.Arrays;
+package com.okwy.algoplayground.Interviews.Yelp;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
-
-public class FilterRestaurantsSortByRating {
-
+public class FilterRestaurants {
 
     /**
      * Given the array restaurants where  restaurants[i] = [idi, ratingi, veganFriendlyi, pricei, distancei].
@@ -24,71 +23,51 @@ public class FilterRestaurantsSortByRating {
         int id;
         int rating;
 
-        Restaurant(int id, int rating) {
+        public Restaurant(int id, int rating) {
             this.id = id;
             this.rating = rating;
         }
     }
 
     private static List<Integer> filterRestaurants(int[][] restaurants, int veganFriendly, int maxPrice, int maxDistance) {
-
         List<Integer> result = new ArrayList<>();
 
-        List<Restaurant> restaurantList = new ArrayList<>();
+        List<Restaurant> filteredRestaurants = new ArrayList<>();
 
-        for(int[] r : restaurants){
-            int id = r[0];
-            int rating = r[1];
-            int vegan = r[2];
-            int price = r[3];
-            int distance = r[4];
+        for(int[] restaurant : restaurants){
+            int id = restaurant[0];
+            int rate = restaurant[1];
+            int vegan = restaurant[2];
+            int price = restaurant[3];
+            int distance = restaurant[4];
 
             if(veganFriendly == 1){
                 if(vegan == 1 && price <= maxPrice && distance <= maxDistance){
-                    restaurantList.add(new Restaurant(id, rating));
+                    filteredRestaurants.add(new Restaurant(id, rate));
                 }
-
             }else{
                 if(price <= maxPrice && distance <= maxDistance){
-                    restaurantList.add(new Restaurant(id, rating));
+                    filteredRestaurants.add(new Restaurant(id, rate));
                 }
             }
 
         }
 
+        Collections.sort(filteredRestaurants, (a,b) -> a.rating == b.rating ? b.id - a.id : b.rating - a.rating);
 
-        restaurantList.sort((a, b) -> a.rating == b.rating ? b.id - a.id : b.rating - a.rating);
-
-        for(Restaurant r : restaurantList){
+        for(Restaurant r : filteredRestaurants){
             result.add(r.id);
         }
 
-
-
         return result;
-
-        /////////////////////////////////////////////////////////////////////////////////
-        //Time complexity -> O(n+m)
-        //Space complexity -> O(n)
-        ///////////////////////////////////////////////////////////////////////////////
     }
 
 
-
     public static void main(String[] args) {
-        List<Integer> test = new ArrayList<>();
-        test.add(1);
-        test.add(2);
-        test.add(3);
 
         int[][] restaurants = {{1,4,1,40,10},{2,8,0,50,5},{3,8,1,30,4},{4,10,0,10,3},{5,1,1,15,1}};
-        int veganFriendly = 1,  maxPrice = 50,  maxDistance = 10;
+        int veganFriendly = 1, maxPrice = 50, maxDistance = 10;
 
-
-
-        System.out.println(test);
-
-        System.out.println(">>>>>>>>>>" + filterRestaurants(restaurants, veganFriendly, maxPrice, maxDistance));
-
+        System.out.println(">>>>>>>>>>>>" + filterRestaurants(restaurants, veganFriendly, maxPrice, maxDistance));
     }
 }
