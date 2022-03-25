@@ -1,8 +1,6 @@
 package com.okwy.algoplayground.Interviews.Yelp;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 public class ActiveBusinessesEnum {
 
@@ -36,13 +34,38 @@ public class ActiveBusinessesEnum {
     public static List<Integer> findActiveBusinesses(List<Businesses> list) {
 
         //Step 1: create a map of event types to int array for parameters to calculate average
+        Map<EventTypes, int[]> eventCountBuizCount = new HashMap<>();
+        //Run through the list and populate the map
+        for(Businesses buiz : list){
+            eventCountBuizCount.putIfAbsent(buiz.eventTypes, new int[]{0,0});
+            eventCountBuizCount.get(buiz.eventTypes)[0] += buiz.occurence;
+            eventCountBuizCount.get(buiz.eventTypes)[1]++;
+        }
 
         //Step 2: run through each entry in the map, and calculate average
+        Map<EventTypes, Double> eventAvg = new HashMap<>();
 
-        //Step 3:
+        for(Map.Entry<EventTypes, int[]> entry : eventCountBuizCount.entrySet()){
+            eventAvg.put(entry.getKey(), (double) entry.getValue()[0]/entry.getValue()[1]);
+        }
 
+        //Step 3: create two sets one for storing the businesses above average, the other to cumulate the result
 
-        return new ArrayList<>();
+        Set<Integer> result = new HashSet<>();
+        Set<Integer> buizAboveAvg = new HashSet<>();
+
+        for(Businesses b : list){
+            //check if business occurence is above average
+            if(b.occurence < eventAvg.get(b.eventTypes)) continue;
+
+            if(buizAboveAvg.contains(b.businessId)){
+                result.add(b.businessId);
+            }else{
+                buizAboveAvg.add(b.businessId);
+            }
+        }
+
+        return new ArrayList<>(result);
 
     }
 
