@@ -21,12 +21,12 @@ public class SearchSuggestionsUsingTrie {
 
     //First step, since we decide to utilize the trie approach, let us create a trie class
 
-    class Trie {
+    static class Trie {
         char value;         //value of the trie node
         Trie[] children;    //corresponding children node with respect to the current root
         boolean isWord;     //validation that current node with respect to root forms a word
 
-        public Trie(char value) {
+        Trie(char value) {
             this.value = value;
             this.children = new Trie[26];
         }
@@ -35,7 +35,7 @@ public class SearchSuggestionsUsingTrie {
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-    public List<List<String>> suggestedProducts(String[] products, String searchWord) {
+    private static List<List<String>> suggestedProducts(String[] products, String searchWord) {
 
         Trie root = buildTrie(products);        //second step is to build the trie tree using the list of word provided.
         // We create the method call then build it from there
@@ -61,7 +61,7 @@ public class SearchSuggestionsUsingTrie {
 
 
     //Second step is to build the trie tree using the list of word provided.
-    private Trie buildTrie(String[] products) {
+    private static Trie buildTrie(String[] products) {
         //In here we attempt to build the trie, we start with creating the root trie node and pass a space (' ')
         // to represent an empty character literal as that will be the default starting point
         Trie root = new Trie(' ');
@@ -74,7 +74,7 @@ public class SearchSuggestionsUsingTrie {
     }
 
     //Third step we build the insert method
-    private void insert(String product, Trie root) {
+    private static void insert(String product, Trie root) {
         //For insertion, we first create the node we would use for the insertion process
         Trie node = root;
 
@@ -95,7 +95,7 @@ public class SearchSuggestionsUsingTrie {
 
 
     //Fourth step, we do the actual top three word search using the trie tree root and the word substring
-    private List<String> findTopThree(Trie root, String word) {
+    private static List<String> findTopThree(Trie root, String word) {
         List<String> result = new ArrayList<>();
         Trie node = root;
 
@@ -131,7 +131,7 @@ public class SearchSuggestionsUsingTrie {
 
 
     //Fifth step - perform a dfs to each child node
-    private List<String> dfs(Trie root, String word, List<String> result) {
+    private static List<String> dfs(Trie root, String word, List<String> result) {
         if(root.isWord){
             result.add(word + root.value);
             if(result.size() >= 3){
@@ -141,7 +141,7 @@ public class SearchSuggestionsUsingTrie {
 
         for(Trie child : root.children){
             if(child != null){
-               result =  dfs(child, word + root.value, result);
+               result = dfs(child, word + root.value, result);
             }
         }
 
@@ -152,5 +152,9 @@ public class SearchSuggestionsUsingTrie {
 
     public static void main(String[] args) {
 
+        String search = "mouse";
+        String[] products = {"mobile","mouse","moneypot","monitor","mousepad"};
+
+        System.out.println(">>>>>" + suggestedProducts(products, search));
     }
 }
