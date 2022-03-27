@@ -45,14 +45,6 @@ public class TopKFrequentWords {
             if(heap.size() > k) heap.poll();
         }
 
-//        String[] outputArray = new String[k];
-
-//        for(int i = k - 1; i >= 0; i--){
-//            outputArray[i] = heap.poll();
-//        }
-//
-//        output = Arrays.asList(outputArray);
-
 
         while(!heap.isEmpty()) output.add(0, heap.poll());
 
