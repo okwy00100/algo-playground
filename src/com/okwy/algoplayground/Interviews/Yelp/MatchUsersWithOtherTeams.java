@@ -19,9 +19,9 @@ public class MatchUsersWithOtherTeams {
      * */
 
 
-    private static List<String[]> getMatchResult(String[][] users) {
+    private static List<List<String>> getMatchResult(List<List<String>> users) {
 
-        List<String[]> result = new ArrayList<>();
+        List<List<String>> result = new ArrayList<>();
 
         return result;
     }
