@@ -122,7 +122,7 @@ public class BusinessSimilarity {
                 Set<Integer> businessUsersInterested = new HashSet<>(similarBiztoUserMap.get(businessOfInterestId));
                 System.out.println(">>>>>>>After Add all" + businessUsersInterested);
 
-                //For intersection
+                //For intersection: N(A ∩ B)
                 double intersection = 0.0;
                 businessUsersInterested.retainAll(similarBiztoUserMap.get(bizId));
                 System.out.println(">>>>>>>After Retain all" + businessUsersInterested);
@@ -130,7 +130,7 @@ public class BusinessSimilarity {
                 System.out.println(">>>>>>> Intersection>>> " + intersection);
 
 
-                //For union
+                //For union:  N(A U B) = N(A) + N(B) - N(A ∩ B)
                 double union = similarBiztoUserMap.get(bizId).size() + similarBiztoUserMap.get(businessOfInterestId).size() - intersection;
                 System.out.println(">>>>>>>Union>> " + union);
 
