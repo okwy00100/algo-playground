@@ -13,13 +13,12 @@ public class FilterRestaurants {
      * false (meaning you can include any restaurant). In addition, you have the filters maxPrice and maxDistance which are the maximum
      * value for price and distance of restaurants you should consider respectively.
      * Return the array of restaurant IDs after filtering, ordered by rating from highest to lowest.
-     *
+     * <p>
      * For restaurants with the same rating, order them by id from highest to lowest.
      * For simplicity veganFriendlyi and veganFriendly take value 1 when it is true, and 0 when it is false.
-
      */
 
-    static class Restaurant{
+    static class Restaurant {
         int id;
         int rating;
 
@@ -34,7 +33,7 @@ public class FilterRestaurants {
 
         List<Restaurant> filteredRestaurants = new ArrayList<>();
 
-        for(int[] restaurant : restaurants){
+        for (int[] restaurant : restaurants) {
             int id = restaurant[0];
             int rate = restaurant[1];
             int vegan = restaurant[2];
@@ -51,11 +50,13 @@ public class FilterRestaurants {
                 }
             }
 
+
+
         }
 
-        Collections.sort(filteredRestaurants, (a,b) -> a.rating == b.rating ? b.id - a.id : b.rating - a.rating);
+        Collections.sort(filteredRestaurants, (a, b) -> a.rating == b.rating ? b.id - a.id : b.rating - a.rating);
 
-        for(Restaurant r : filteredRestaurants){
+        for (Restaurant r : filteredRestaurants) {
             result.add(r.id);
         }
 
@@ -65,7 +66,7 @@ public class FilterRestaurants {
 
     public static void main(String[] args) {
 
-        int[][] restaurants = {{1,4,1,40,10},{2,8,0,50,5},{3,8,1,30,4},{4,10,0,10,3},{5,1,1,15,1}, {6,1,1,15,1}};
+        int[][] restaurants = {{1, 4, 1, 40, 10}, {2, 8, 0, 50, 5}, {3, 8, 1, 30, 4}, {4, 10, 0, 10, 3}, {5, 1, 1, 15, 1}, {6, 1, 1, 15, 1}};
         int veganFriendly = 1, maxPrice = 50, maxDistance = 10;
 
         System.out.println(">>>>>>>>>>>>" + filterRestaurants(restaurants, veganFriendly, maxPrice, maxDistance));

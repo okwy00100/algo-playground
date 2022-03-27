@@ -2,7 +2,7 @@ package com.okwy.algoplayground.Interviews.Yelp;
 
 import java.util.*;
 
-public class TopPeopleMostEmails {
+public class TopKPeopleMostEmails {
 
     /**
      * Given a list of email objects, find top K persons who received most number of emails - done
@@ -33,24 +33,41 @@ public class TopPeopleMostEmails {
         }
 
         //initialize a heap with 'the less frequent element first'
-        PriorityQueue<String> heap = new PriorityQueue<>((a, b) -> emailCount.get(a) - emailCount.get(b));
+        PriorityQueue<String> heap = new PriorityQueue<>((a, b) -> Integer.compare(emailCount.get(a), emailCount.get(b)));
 
 
         //keep the k most frequent people in the heap
         for(String person : emailCount.keySet()){
             heap.add(person);
+            System.out.println(">>>>" + heap);
             if(heap.size() >k){
                 heap.poll();
             }
+            System.out.println(">>>>" + heap);
+        }
+//
+//        while(!heap.isEmpty()){
+//            System.out.println(">>>>" + result);
+//            result.add(heap.poll());
+//            System.out.println(">>>>" + result);
+//        }
+
+        String[] output = new String[k];
+        for(int i = k - 1; i >=0; i--){
+            System.out.println(">>>>" + Arrays.toString(output));
+            output[i] = heap.poll();
+            System.out.println(">>>>" + Arrays.toString(output));
         }
 
-        while(!heap.isEmpty()){
-            result.add(heap.poll());
-        }
-
+        result = Arrays.asList(output);
+        System.out.println(">>>>" + result);
 
         return result;
     }
+
+
+
+
 
     public static void main(String[] args) {
 
@@ -58,6 +75,7 @@ public class TopPeopleMostEmails {
 
         emails.add(new Email("John", "Peter", "bread"));
         emails.add(new Email("John", "Seun", "bread"));
+        emails.add(new Email("Seun", "Okwy", "bread"));
         emails.add(new Email("Seun", "Okwy", "bread"));
         emails.add(new Email("Seun", "John", "bread"));
         emails.add(new Email("Seun", "Jack", "bread"));
@@ -67,7 +85,7 @@ public class TopPeopleMostEmails {
         emails.add(new Email("Okwy", "Seun", "bread"));
         emails.add(new Email("John", "Seun", "bread"));
 
-        System.out.println(topKMostEmails(emails, 4));
+        System.out.println(topKMostEmails(emails, 3));
 
     }
 }

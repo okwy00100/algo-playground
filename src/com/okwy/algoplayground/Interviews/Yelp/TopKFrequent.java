@@ -42,8 +42,10 @@ public class TopKFrequent {
         // keep k top frequent elements in the heap
         // O(N log k) < O(N log N) time
         for(int i : count.keySet()){
+            System.out.println(">>>>" + heap);
             heap.add(i);
             if(heap.size() > k) heap.poll();
+            System.out.println(">>>>" + heap);
         }
 
 
@@ -51,7 +53,10 @@ public class TopKFrequent {
         // O(k log k) time
         int[] output = new int[k];
         for(int i = k - 1; i >=0; i--){
+            System.out.println(">>>>" + Arrays.toString(output));
             output[i] = heap.poll();
+            System.out.println(">>>>" + Arrays.toString(output));
+
         }
 
 
