@@ -1,7 +1,6 @@
 package com.okwy.algoplayground.Interviews.Yelp;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class MatchUsersWithOtherTeams {
 
@@ -19,14 +18,67 @@ public class MatchUsersWithOtherTeams {
      * */
 
 
-    private static List<String[]> getMatchResult(String[][] users) {
+    private static List<List<String>> getMatchResultOne(String[][] users) {
 
-        List<String[]> result = new ArrayList<>();
+        List<List<String>> result = new ArrayList<>();
+
+        //Create a map for department to queue/heap for each staff
+        Map<String, Queue<String>> map = new HashMap<>();
+
+        for(String[] user : users){
+            map.putIfAbsent(user[1], new LinkedList<>());
+            map.get(user[1]).offer(user[0]);
+        }
+
+        PriorityQueue<String> maxHeap = new PriorityQueue<>((a,b) -> map.get(b).size() - map.get(a).size());
+
+        maxHeap.addAll(map.keySet());
+
+        while(maxHeap.size() > 1){
+            String e1 = maxHeap.poll();
+            String e2 = maxHeap.poll();
+
+            result.add(new ArrayList<>(Arrays.asList(map.get(e1).poll(), map.get(e2).poll())));
+
+            if(map.get(e1).size() > 0) maxHeap.offer(e1);
+            if(map.get(e2).size() > 0) maxHeap.offer(e2);
+        }
+
+
 
         return result;
     }
 
+
+    /////////////////////////////////////////////////////////////////////////////////////
+
+    private static List<List<String>> getMatchResultTwo(String[][] users) {
+        Map<String, Queue<String>> map = new HashMap<>();
+        for(String[] u : users) {
+            map.putIfAbsent(u[1], new LinkedList<>());
+            map.get(u[1]).offer(u[0]);
+        }
+        Queue<Map.Entry<String, Queue<String>>> maxHeap = new PriorityQueue<>((a, b)->b.getValue().size() - a.getValue().size());
+        maxHeap.addAll(map.entrySet());
+        List<List<String>> res = new ArrayList<>();
+        while(maxHeap.size() > 1) {
+            Map.Entry<String, Queue<String>> e1 = maxHeap.poll();
+            Map.Entry<String, Queue<String>> e2 = maxHeap.poll();
+            res.add(new ArrayList<>(Arrays.asList( e1.getValue().poll(), e2.getValue().poll())));
+            if(e1.getValue().size() > 0)
+                maxHeap.offer(e1);
+            if(e2.getValue().size() > 0)
+                maxHeap.offer(e2);
+        }
+        return res;
+    }
+
     public static void main(String[] args) {
 
+        List<List<String>> input = new ArrayList<>();
+        String[][] inputArray = {{"Alex","Infra"},{"Kevin","Search"},{"Jill","HR"},{"Jane","Infra"},{"Justin","Search"},{"Michael","HR"}};
+
+        System.out.println(">>>>>>>>>>>>" + getMatchResultOne(inputArray));
+        System.out.println(">>>>>>>>>>>>" + getMatchResultTwo(inputArray));
     }
 }

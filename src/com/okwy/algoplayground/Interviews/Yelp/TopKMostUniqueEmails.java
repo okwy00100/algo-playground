@@ -24,14 +24,15 @@ public class TopKMostUniqueEmails {
         }
     }
 
-    static class UniqueEmail{
+    static class UniqueEmail {
         String fromPerson;
         String toPerson;
 
-        public UniqueEmail(String fromPerson, String toPerson) {
+        UniqueEmail(String fromPerson, String toPerson) {
             this.fromPerson = fromPerson;
             this.toPerson = toPerson;
         }
+
 
         @Override
         public String toString() {
@@ -43,31 +44,28 @@ public class TopKMostUniqueEmails {
     }
 
 
-    private static List<UniqueEmail> topKMostUniqueEmails(List<Email> emails, int k) {
+    //Tuple solution incompleteeeeee
+    private static List<UniqueEmail> topKMostUniqueEmailsTuple(List<Email> emails, int k) {
         List<UniqueEmail> result = new ArrayList<>();
         Map<UniqueEmail, Integer> uniqueEmailCount = new HashMap<>();
 
         Set<UniqueEmail> seen = new HashSet<>();
-        for(Email e : emails){
-//            if(!seen.contains(new UniqueEmail(e.fromPerson, e.toPerson))){
-//                seen.add(new UniqueEmail(e.fromPerson, e.toPerson));
-//            }
-            UniqueEmail uniqueEmail = new UniqueEmail(e.fromPerson, e.toPerson);
-            if(uniqueEmailCount.containsKey(uniqueEmail)) {
-                uniqueEmailCount.put(uniqueEmail,
-                        uniqueEmailCount.getOrDefault(new UniqueEmail(e.fromPerson, e.toPerson), 0) + 1);
-            }else{
-                //
+        for (Email e : emails) {
+            if (!seen.stream().anyMatch(a -> a.fromPerson.equals(e.fromPerson) && a.toPerson.equals(e.toPerson))) {
+                seen.add(new UniqueEmail(e.fromPerson, e.toPerson));
+            } else {
+                //uniqueEmailCount.put(seen.)
             }
+
         }
 
         System.out.println(">>>>>>" + uniqueEmailCount.keySet());
 
         PriorityQueue<UniqueEmail> heap = new PriorityQueue<>((a, b) -> Integer.compare(uniqueEmailCount.get(a), uniqueEmailCount.get(b)));
 
-        for(UniqueEmail email : uniqueEmailCount.keySet()){
+        for (UniqueEmail email : uniqueEmailCount.keySet()) {
             heap.add(email);
-            if(heap.size() > k){
+            if (heap.size() > k) {
                 heap.poll();
             }
         }
@@ -79,7 +77,7 @@ public class TopKMostUniqueEmails {
 
 
         UniqueEmail[] output = new UniqueEmail[k];
-        for(int i = k - 1; i >=0; i--){
+        for (int i = k - 1; i >= 0; i--) {
             System.out.println(">>>>" + Arrays.toString(output));
             output[i] = heap.poll();
             System.out.println(">>>>" + Arrays.toString(output));
@@ -91,6 +89,39 @@ public class TopKMostUniqueEmails {
 
         return result;
 
+    }
+
+
+    /////////////////////////////////////////////////////////////////
+
+
+    private static List<String> topKMostUniqueEmailsString(List<Email> emails, int k) {
+        List<String> result = new ArrayList<>();
+        Map<String, Integer> uniqueEmailCount = new HashMap<>();
+
+
+        for (Email e : emails) {
+            uniqueEmailCount.put(e.toPerson + "-" + e.fromPerson, uniqueEmailCount.getOrDefault(e.toPerson + "-" + e.fromPerson, 0) + 1);
+        }
+
+        PriorityQueue<String> uniqueHeap = new PriorityQueue<>((a, b) -> Integer.compare(uniqueEmailCount.get(a), uniqueEmailCount.get(b)));
+
+        for (String uniquePair : uniqueEmailCount.keySet()) {
+            uniqueHeap.add(uniquePair);
+            if (uniqueHeap.size() > k) {
+                uniqueHeap.poll();
+            }
+        }
+
+        String[] output = new String[k];
+        for (int i = k - 1; i >= 0; i--) {
+            output[i] = uniqueHeap.poll();
+        }
+
+        result = Arrays.asList(output);
+
+
+        return result;
     }
 
     public static void main(String[] args) {
@@ -107,6 +138,9 @@ public class TopKMostUniqueEmails {
         emails.add(new Email("Okwy", "Seun", "bread"));
         emails.add(new Email("John", "Seun", "bread"));
 
-        System.out.println(topKMostUniqueEmails(emails, 4));
+//        System.out.println(topKMostUniqueEmailsTuple(emails, 4));
+        System.out.println(topKMostUniqueEmailsString(emails, 4));
     }
+
+
 }

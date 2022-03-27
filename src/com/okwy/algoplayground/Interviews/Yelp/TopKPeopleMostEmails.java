@@ -59,6 +59,12 @@ public class TopKPeopleMostEmails {
             System.out.println(">>>>" + Arrays.toString(output));
         }
 
+//        for(int i =0; i < k; i++){
+//            System.out.println(">>>>" + Arrays.toString(output));
+//            output[i] = heap.poll();
+//            System.out.println(">>>>" + Arrays.toString(output));
+//        }
+
         result = Arrays.asList(output);
         System.out.println(">>>>" + result);
 

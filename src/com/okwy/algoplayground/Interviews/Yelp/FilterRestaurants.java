@@ -22,7 +22,7 @@ public class FilterRestaurants {
         int id;
         int rating;
 
-        public Restaurant(int id, int rating) {
+        Restaurant(int id, int rating) {
             this.id = id;
             this.rating = rating;
         }
@@ -31,31 +31,35 @@ public class FilterRestaurants {
     private static List<Integer> filterRestaurants(int[][] restaurants, int veganFriendly, int maxPrice, int maxDistance) {
         List<Integer> result = new ArrayList<>();
 
+        //The tuple list using our user defined restaurant class
         List<Restaurant> filteredRestaurants = new ArrayList<>();
 
         for (int[] restaurant : restaurants) {
+            //identify each index of a restaurant according to defined parameter
             int id = restaurant[0];
             int rate = restaurant[1];
             int vegan = restaurant[2];
             int price = restaurant[3];
             int distance = restaurant[4];
 
+            // if restaurant MUST be vegan friendly, the vegan param must match, also the other parameters, must be
+            // below the limit set
             if(veganFriendly == 1){
                 if(vegan == 1 && price <= maxPrice && distance <= maxDistance){
                     filteredRestaurants.add(new Restaurant(id, rate));
                 }
-            }else{
+            }else{ //if restaurant isn't a must to be vegan, we ignore the param during comparision
                 if(price <= maxPrice && distance <= maxDistance){
                     filteredRestaurants.add(new Restaurant(id, rate));
                 }
             }
 
-
-
         }
 
+        //After we've gone through the list, we can sort it according to the constraint given
         Collections.sort(filteredRestaurants, (a, b) -> a.rating == b.rating ? b.id - a.id : b.rating - a.rating);
 
+        //Then run through the tuple list to populate the integer list we're meant to return
         for (Restaurant r : filteredRestaurants) {
             result.add(r.id);
         }
