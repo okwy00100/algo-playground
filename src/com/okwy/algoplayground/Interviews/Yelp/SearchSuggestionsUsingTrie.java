@@ -13,7 +13,7 @@ public class SearchSuggestionsUsingTrie {
      * <p>
      * Return a list of lists of the suggested products after each character of searchWord is typed.
      * <p>
-     * This solution is is implemented using Trie
+     * This solution is is implemented using TrieNode
      */
 
 
@@ -45,7 +45,7 @@ public class SearchSuggestionsUsingTrie {
         // return top three possible suggestions for each individual letter's entry
         // in lexicographical order
 
-        for (int i =1; i <= searchWord.length(); i++) {
+        for (int i = 0; i < searchWord.length(); i++) {
             result.add(findTopThree(root, searchWord.substring(0, i)));      //for the fourth step, we do the actual top three word search,
             // using the trie tree root and the word substring
             //we create the method call then build it from there
@@ -57,7 +57,6 @@ public class SearchSuggestionsUsingTrie {
     }
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
 
 
     //Second step is to build the trie tree using the list of word provided.
@@ -84,9 +83,9 @@ public class SearchSuggestionsUsingTrie {
         for (int i = 0; i < product.length(); i++) {
             char c = product.charAt(i);
             if (node.children[c - 'a'] == null) {             //does the letter exist in the tree
-                node.children[c - 'a'] = new Trie(c);       //if yes, insert letter as a child
+                node.children[c - 'a'] = new Trie(c);       //if not, create the node
             }
-            node = node.children[c - 'a'];                  //move to child node
+            node = node.children[c - 'a'];                  //make the node new root
 
         }                                                   //repeat
 
@@ -103,9 +102,9 @@ public class SearchSuggestionsUsingTrie {
         for (char c : word.toCharArray()) {
             if (node.children[c - 'a'] == null) {       //if the child node is empty simply return the result(empty list)
                 return result;
-            } else {
-                node = node.children[c - 'a'];          //else traverse the tree using the word
             }
+            node = node.children[c - 'a'];          //else traverse the tree using the word
+
         }
 
         //If the search word exists as a word, add to the list of strings to retrun as a result
@@ -132,16 +131,16 @@ public class SearchSuggestionsUsingTrie {
 
     //Fifth step - perform a dfs to each child node
     private static List<String> dfs(Trie root, String word, List<String> result) {
-        if(root.isWord){
+        if (root.isWord) {
             result.add(word + root.value);
-            if(result.size() >= 3){
+            if (result.size() >= 3) {
                 return result;
             }
         }
 
-        for(Trie child : root.children){
-            if(child != null){
-               result = dfs(child, word + root.value, result);
+        for (Trie child : root.children) {
+            if (child != null) {
+                result = dfs(child, word + root.value, result);
             }
         }
 
@@ -153,7 +152,7 @@ public class SearchSuggestionsUsingTrie {
     public static void main(String[] args) {
 
         String search = "mouse";
-        String[] products = {"mobile","mouse","moneypot","monitor","mousepad"};
+        String[] products = {"mobile", "mouse", "moneypot", "monitor", "mousepad"};
 
         System.out.println(">>>>>" + suggestedProducts(products, search));
     }
