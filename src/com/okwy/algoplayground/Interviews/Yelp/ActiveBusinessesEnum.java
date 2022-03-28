@@ -42,12 +42,20 @@ public class ActiveBusinessesEnum {
             eventCountBuizCount.get(buiz.eventTypes)[1]++;
         }
 
-        //Step 2: run through each entry in the map, and calculate average
+        //Step 2: run through each entry in the map, and calculate average for each eventtype
+        //we create a map to hold the average per each eventtype
         Map<EventTypes, Double> eventAvg = new HashMap<>();
 
-        for(Map.Entry<EventTypes, int[]> entry : eventCountBuizCount.entrySet()){
-            eventAvg.put(entry.getKey(), (double) entry.getValue()[0]/entry.getValue()[1]);
+        //run through each entry and find average
+//        for(Map.Entry<EventTypes, int[]> entry : eventCountBuizCount.entrySet()){
+//            eventAvg.put(entry.getKey(), (double) entry.getValue()[0]/entry.getValue()[1]);
+//        }
+
+        for(EventTypes e : eventCountBuizCount.keySet()){
+            eventAvg.put(e, (double) eventCountBuizCount.get(e)[0]/eventCountBuizCount.get(e)[1]);
         }
+
+
 
         //Step 3: create two sets one for storing the businesses above average, the other to cumulate the result
 
@@ -55,12 +63,14 @@ public class ActiveBusinessesEnum {
         Set<Integer> buizAboveAvg = new HashSet<>();
 
         for(Businesses b : list){
-            //check if business occurence is above average
+            //check if business occurence is below average, if true, skip current iteration
             if(b.occurence < eventAvg.get(b.eventTypes)) continue;
 
+            //Here current business occurence is above average
+            //if the business above average set has it, slot id into result
             if(buizAboveAvg.contains(b.businessId)){
                 result.add(b.businessId);
-            }else{
+            }else{//else, put it in the appropriate set for another iteration
                 buizAboveAvg.add(b.businessId);
             }
         }
