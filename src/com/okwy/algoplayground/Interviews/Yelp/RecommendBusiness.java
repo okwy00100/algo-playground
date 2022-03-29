@@ -1,9 +1,6 @@
 package com.okwy.algoplayground.Interviews.Yelp;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class RecommendBusiness {
 
@@ -85,10 +82,23 @@ public class RecommendBusiness {
 
 
     public static List<String> findReachableBusinesses(Business startingBusiness, int distance) {
-        List<String> result = new ArrayList<>();
+        Map<String , Integer> businessNames = new HashMap<>();
+        Queue<Business> queue = new ArrayDeque<>();
+        queue.add(startingBusiness);
+        while(!queue.isEmpty()) {
+            Business temp = queue.poll();
+            int previousDistance = 0;
+            if(businessNames.get(temp.getName()) != null) previousDistance = businessNames.get(temp.getName());
+            for (Map.Entry<Business,Integer> each : temp.nearbyBusinesses.entrySet()) {
+                if(previousDistance+each.getValue() <= distance) {
+                    businessNames.put(each.getKey().getName() , each.getValue());
+                    queue.add(each.getKey());
+                }
+            }
+        }
 
 
-        return result;
+        return new ArrayList<>(businessNames.keySet());
     }
 
 
