@@ -1,7 +1,7 @@
 package com.okwy.algoplayground.Strings;
 
 public class PalindromeCheck {
-    public static boolean isPalindromeFirstAttempt(String str) {
+    private static boolean isPalindromeFirstAttempt(String str) {
         //Time complexity - O(n)
         //Space complexity - O(1)
         boolean palindromCheck = false;
@@ -13,7 +13,7 @@ public class PalindromeCheck {
         return palindromCheck;
     }
 
-    public static boolean isPalindromeOne(String str) {
+    private static boolean isPalindromeOne(String str) {
         //Time complexity - O(n^2)
         //Space complexity - O(n)
         String reversedString ="";
@@ -23,7 +23,7 @@ public class PalindromeCheck {
         return str.equals(reversedString);
     }
 
-    public static boolean isPalindromeTwo(String str) {
+    private static boolean isPalindromeTwo(String str) {
         //Time complexity - O(n)
         //Space complexity - O(1)
         int left = 0;
@@ -36,6 +36,41 @@ public class PalindromeCheck {
             right--;
         }
         return true;
+    }
+
+    private static boolean isPalindromeThree(String str){
+        for(int i = 0, j = str.length() - 1; i < j; i++, j--){
+            while(i < j && !Character.isLetterOrDigit(str.charAt(i))){
+                i++;
+            }
+
+            while(i < j && !Character.isLetterOrDigit(str.charAt(j))){
+                j--;
+            }
+
+            if(str.toLowerCase().charAt(i) != str.toLowerCase().charAt(j)){
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    private static boolean isPalindromeStringBuilder(String str){
+
+        StringBuilder builder = new StringBuilder();
+
+        for(char ch : str.toLowerCase().toCharArray()){
+            if(Character.isLetterOrDigit(ch)){
+                builder.append(ch);
+            }
+        }
+
+        String filteredString = builder.toString();
+        String reversedString = builder.reverse().toString();
+
+        return filteredString.equals(reversedString);
+
     }
 
 
