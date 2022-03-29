@@ -9,6 +9,9 @@ public class CaesarCipher {
             if(stringArray[i] > 96 && stringArray[i] <= 122) {
                 int newLetter = stringArray[i] + keyMod;
                 stringArray[i] = newLetter <= 122 ? (char) newLetter : (char) (96 + newLetter % 122);
+            }else if(stringArray[i] > 64 && stringArray[i] <= 90){
+                int newLetter = stringArray[i] + key;
+                stringArray[i] = newLetter <= 90 ? (char) newLetter : (char) (64 + (newLetter % 90));
             }
         }
 
