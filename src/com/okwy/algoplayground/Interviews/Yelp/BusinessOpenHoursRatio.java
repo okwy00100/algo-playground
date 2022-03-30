@@ -1,5 +1,7 @@
 package com.okwy.algoplayground.Interviews.Yelp;
 
+import java.util.List;
+
 public class BusinessOpenHoursRatio {
 
     /**
@@ -56,6 +58,24 @@ public class BusinessOpenHoursRatio {
             this.start = Float.valueOf(rangeSplit[0]);
             this.end = Float.valueOf(rangeSplit[1]);
         }
+    }
+
+
+    public static float openHoursRatio(TimeRange queryTimeRange, List<TimeRange> openHours) {
+        float start = queryTimeRange.start;
+        float end = queryTimeRange.end;
+
+        float overlap = 0.0f;
+        for (TimeRange timeRange: openHours){
+            float overlapStart = Math.max(start, timeRange.start);
+            float overlapEnd = Math.min(end, timeRange.end);
+            float value = overlapEnd - overlapStart;
+            if (value>0){
+                overlap+= value;
+            }
+        }
+
+        return  overlap/(end-start);
     }
 
 

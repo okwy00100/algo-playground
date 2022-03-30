@@ -45,27 +45,23 @@ public class TopKPeopleMostEmails {
             }
             System.out.println(">>>>" + heap);
         }
-//
-//        while(!heap.isEmpty()){
-//            System.out.println(">>>>" + result);
-//            result.add(heap.poll());
-//            System.out.println(">>>>" + result);
-//        }
 
-        String[] output = new String[k];
-        for(int i = k - 1; i >=0; i--){
-            System.out.println(">>>>" + Arrays.toString(output));
-            output[i] = heap.poll();
-            System.out.println(">>>>" + Arrays.toString(output));
+        while(!heap.isEmpty()){
+            System.out.println(">>>>" + result);
+            result.add(0, heap.poll());
+            System.out.println(">>>>" + result);
         }
 
-//        for(int i =0; i < k; i++){
+//        String[] output = new String[k];
+//        for(int i = k - 1; i >=0; i--){
 //            System.out.println(">>>>" + Arrays.toString(output));
 //            output[i] = heap.poll();
 //            System.out.println(">>>>" + Arrays.toString(output));
 //        }
+//
+//        result = Arrays.asList(output);
 
-        result = Arrays.asList(output);
+
         System.out.println(">>>>" + result);
 
         return result;
@@ -81,6 +77,7 @@ public class TopKPeopleMostEmails {
 
         emails.add(new Email("John", "Peter", "bread"));
         emails.add(new Email("John", "Seun", "bread"));
+        emails.add(new Email("Seun", "Okwy", "bread"));
         emails.add(new Email("Seun", "Okwy", "bread"));
         emails.add(new Email("Seun", "Okwy", "bread"));
         emails.add(new Email("Seun", "John", "bread"));
