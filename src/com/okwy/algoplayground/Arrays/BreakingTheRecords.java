@@ -56,8 +56,6 @@ public class BreakingTheRecords {
                 max = Math.max(max, scores.get(i));
             }
 
-
-
         }
 
         records.add(recordsMax);
