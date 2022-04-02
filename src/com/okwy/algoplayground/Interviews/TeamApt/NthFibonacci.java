@@ -1,11 +1,11 @@
-package com.okwy.algoplayground.DynamicProgramming;
-
-import com.sun.xml.internal.xsom.impl.scd.Iterators;
+package com.okwy.algoplayground.Interviews.TeamApt;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public class NthFibonacciDynamic {
+public class NthFibonacci {
+
+
 
     /**
      * The Fibonacci numbers, commonly denoted F(n) form a sequence, called the Fibonacci sequence,
