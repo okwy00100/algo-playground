@@ -75,7 +75,7 @@ public class NthFibonacciDynamic {
 
 
 
-    //Time - O(n); Space - O(n)
+    //Time - O(n); Space - O(1)
     private static int fibonacciTabulationOptimized(int n) {
 
         //Using an optimized bottom up approach (iteration)
