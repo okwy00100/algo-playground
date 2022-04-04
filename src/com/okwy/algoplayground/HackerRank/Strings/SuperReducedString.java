@@ -22,18 +22,19 @@ public class SuperReducedString {
 
 
     private static String getReducedString(String s) {
-        char[] ch = s.toCharArray();
+//        char[] ch = s.toCharArray();
         //Arrays.sort(ch);
 
         Stack<Character> st = new Stack<Character>();
-        for (int i = 0; i < ch.length; i++) {
-            if (st.isEmpty()) {
-                st.push(ch[i]);
 
-            } else if (st.peek() == ch[i]) {
+        for (char ch : s.toCharArray()) {
+            if (st.isEmpty()) {
+                st.push(ch);
+
+            } else if (st.peek() == ch) {
                 st.pop();
             } else {
-                st.push(ch[i]);
+                st.push(ch);
 
             }
         }
