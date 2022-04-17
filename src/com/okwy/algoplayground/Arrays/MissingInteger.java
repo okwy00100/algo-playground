@@ -1,5 +1,8 @@
 package com.okwy.algoplayground.Arrays;
 
+import java.util.HashSet;
+import java.util.Set;
+
 /**
  * @author okwy_nwachukwu
  * created on 4/15/22 inside the package - com.okwy.algoplayground.Arrays
@@ -32,13 +35,28 @@ public class MissingInteger {
      * */
 
     private static int missingInteger(int[] A) {
-        return 0;
+        int smallestMissingInteger = 1;
+        if (A.length == 0) {
+            return smallestMissingInteger;
+        }
+        Set<Integer> set = new HashSet<Integer>();
+        for (int i = 0; i < A.length; i++) {
+            if (A[i] > 0) {
+                set.add(A[i]);
+            }
+        }
+        while (set.contains(smallestMissingInteger)) {
+            smallestMissingInteger++;
+        }
+        return smallestMissingInteger;
     }
 
 
 
     public static void main(String[] args) {
+        int[] input = {1, 3, 6, 4, 1, 2};
 
+        System.out.println(missingInteger(input));
     }
 
 }
